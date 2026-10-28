@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Eiseb Rangeland Manager - Grazing rotations">
+    <title>Grazing · Eiseb Rangeland Manager</title>
+    <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<div class="app-shell">
+
+    <aside class="sidebar">
+        <a class="sidebar-brand" href="dashboard.jsp" aria-label="Eiseb dashboard">
+            <span class="brand-mark small"><img src="assets/img/logo.svg" alt=""></span>
+            <span class="brand-title">Eiseb <small>Rangeland Manager</small></span>
+        </a>
+        <nav class="sidebar-nav" aria-label="Main navigation">
+            <a href="dashboard.jsp"><span class="nav-icon" aria-hidden="true">◼</span>Dashboard</a>
+            <a href="camps.html"><span class="nav-icon" aria-hidden="true">⌂</span>Camps</a>
+            <a href="grazing.html"><span class="nav-icon" aria-hidden="true">↻</span>Grazing</a>
+            <a href="monitoring.html"><span class="nav-icon" aria-hidden="true">♧</span>Monitoring</a>
+            <a href="water.html"><span class="nav-icon" aria-hidden="true">◌</span>Water</a>
+            <a href="report.jsp"><span class="nav-icon" aria-hidden="true">▦</span>Reports</a>
+        </nav>
+        <div class="sidebar-footer">
+            <form method="post" action="LogoutServlet">
+                <button class="logout-button" type="submit"><span class="nav-icon" aria-hidden="true">⏻</span>Sign out</button>
+            </form>
+        </div>
+    </aside>
+
+    <div class="main-panel">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">Grazing rotation</p>
+                <h1>Grazing rotations</h1>
+                <p>Plan livestock movements and keep a reliable rotation history.</p>
+            </div>
+            <div class="topbar-actions"><button class="btn btn-primary" type="button" data-toggle-panel="#grazingPanel">Add rotation</button></div>
+        </header>
+        <main class="content">
+
+    <div class="alerts"><div class="alert" data-alert-from-query hidden></div></div>
+    <section id="grazingPanel" class="panel" hidden>
+        <div class="panel-header"><div><h2>Add grazing rotation</h2><p>Assign livestock to a camp for a defined period.</p></div></div>
+        <div class="panel-body">
+            <form method="post" action="GrazingServlet">
+                <div class="form-grid">
+                    <label class="field"><span>Camp</span><select id="camp_id" name="camp_id" required></select></label>
+                    <label class="field"><span>Livestock type</span><select name="livestock_type" required><option value="">Select type</option><option>Cattle</option><option>Goats</option><option>Sheep</option><option>Mixed</option></select></label>
+                    <label class="field"><span>Livestock count</span><input type="number" name="livestock_count" required min="1" step="1" placeholder="e.g. 30"></label>
+                    <label class="field"><span>Start date</span><input type="date" name="start_date" required></label>
+                    <label class="field"><span>End date</span><input type="date" name="end_date" required></label>
+                    <label class="field full"><span>Notes</span><textarea name="notes" maxlength="1000" placeholder="Rotation purpose, herder instructions or follow-up actions"></textarea></label>
+                    <div class="field full"><button class="btn btn-primary" type="submit">Save rotation</button> <button class="btn btn-ghost" type="button" data-toggle-panel="#grazingPanel">Cancel</button></div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="panel">
+        <div class="panel-header"><div><h2>Rotation history</h2><p>Most recent livestock movements first.</p></div></div>
+        <div class="table-wrap">
+            <table id="grazingTable">
+                <thead><tr><th>#</th><th>Camp</th><th>Livestock</th><th>Count</th><th>Start</th><th>End</th><th>Notes</th><th>Action</th></tr></thead>
+                <tbody><tr><td class="empty-state" colspan="8">Loading grazing rotations…</td></tr></tbody>
+            </table>
+        </div>
+    </section>
+
+        </main>
+        <p class="page-footer">© 2026 Eiseb Country Traders. Rangeland operations management.</p>
+    </div>
+</div>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/grazing.js"></script>
+</body>
+</html>

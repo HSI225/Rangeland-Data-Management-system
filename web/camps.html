@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Eiseb Rangeland Manager - Rangeland camps">
+    <title>Camps · Eiseb Rangeland Manager</title>
+    <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<div class="app-shell">
+
+    <aside class="sidebar">
+        <a class="sidebar-brand" href="dashboard.jsp" aria-label="Eiseb dashboard">
+            <span class="brand-mark small"><img src="assets/img/logo.svg" alt=""></span>
+            <span class="brand-title">Eiseb <small>Rangeland Manager</small></span>
+        </a>
+        <nav class="sidebar-nav" aria-label="Main navigation">
+            <a href="dashboard.jsp"><span class="nav-icon" aria-hidden="true">◼</span>Dashboard</a>
+            <a href="camps.html"><span class="nav-icon" aria-hidden="true">⌂</span>Camps</a>
+            <a href="grazing.html"><span class="nav-icon" aria-hidden="true">↻</span>Grazing</a>
+            <a href="monitoring.html"><span class="nav-icon" aria-hidden="true">♧</span>Monitoring</a>
+            <a href="water.html"><span class="nav-icon" aria-hidden="true">◌</span>Water</a>
+            <a href="report.jsp"><span class="nav-icon" aria-hidden="true">▦</span>Reports</a>
+        </nav>
+        <div class="sidebar-footer">
+            <form method="post" action="LogoutServlet">
+                <button class="logout-button" type="submit"><span class="nav-icon" aria-hidden="true">⏻</span>Sign out</button>
+            </form>
+        </div>
+    </aside>
+
+    <div class="main-panel">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">Land management</p>
+                <h1>Rangeland camps</h1>
+                <p>Register and maintain the camps that make up the operation.</p>
+            </div>
+            <div class="topbar-actions"><button class="btn btn-primary" type="button" data-toggle-panel="#campPanel">Add camp</button></div>
+        </header>
+        <main class="content">
+
+    <div class="alerts"><div class="alert" data-alert-from-query hidden></div></div>
+    <section id="campPanel" class="panel" hidden>
+        <div class="panel-header"><div><h2>Add a new camp</h2><p>Provide the core location, capacity and infrastructure details.</p></div></div>
+        <div class="panel-body">
+            <form method="post" action="CampServlet">
+                <div class="form-grid">
+                    <label class="field"><span>Camp name</span><input type="text" name="camp_name" required maxlength="100" placeholder="e.g. North Camp"></label>
+                    <label class="field"><span>Location</span><input type="text" name="location" required maxlength="120" placeholder="e.g. Northern Block"></label>
+                    <label class="field"><span>Size (hectares)</span><input type="number" name="size_hectares" required min="0.01" step="0.01" placeholder="e.g. 250"></label>
+                    <label class="field"><span>Grazing capacity</span><input type="number" name="grazing_capacity" required min="0" step="1" placeholder="e.g. 50"></label>
+                    <label class="field"><span>Camp type</span><select name="camp_type" required><option value="">Select type</option><option>Grassland</option><option>Bush</option><option>Mixed</option><option>Savanna</option></select></label>
+                    <label class="field"><span>Water source</span><input type="text" name="water_source" required maxlength="120" placeholder="e.g. Borehole, Dam"></label>
+                    <div class="field full"><button class="btn btn-primary" type="submit">Save camp</button> <button class="btn btn-ghost" type="button" data-toggle-panel="#campPanel">Cancel</button></div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="panel">
+        <div class="panel-header"><div><h2>Camp register</h2><p>All active and historical camp records.</p></div></div>
+        <div class="table-wrap">
+            <table id="campsTable">
+                <thead><tr><th>#</th><th>Camp</th><th>Location</th><th>Size</th><th>Capacity</th><th>Type</th><th>Water</th><th>Status</th><th>Action</th></tr></thead>
+                <tbody><tr><td class="empty-state" colspan="9">Loading camps…</td></tr></tbody>
+            </table>
+        </div>
+    </section>
+
+        </main>
+        <p class="page-footer">© 2026 Eiseb Country Traders. Rangeland operations management.</p>
+    </div>
+</div>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/camps.js"></script>
+</body>
+</html>

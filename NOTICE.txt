@@ -1,0 +1,6 @@
+Eiseb Rangeland Manager
+Copyright © 2026 Eiseb Country Traders
+
+This refined source package is prepared for commercial deployment review.
+Replace seeded credentials, configure production database credentials and serve
+the application over HTTPS before production use.

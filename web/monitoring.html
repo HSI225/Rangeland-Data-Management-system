@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Eiseb Rangeland Manager - Vegetation monitoring">
+    <title>Monitoring · Eiseb Rangeland Manager</title>
+    <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<div class="app-shell">
+
+    <aside class="sidebar">
+        <a class="sidebar-brand" href="dashboard.jsp" aria-label="Eiseb dashboard">
+            <span class="brand-mark small"><img src="assets/img/logo.svg" alt=""></span>
+            <span class="brand-title">Eiseb <small>Rangeland Manager</small></span>
+        </a>
+        <nav class="sidebar-nav" aria-label="Main navigation">
+            <a href="dashboard.jsp"><span class="nav-icon" aria-hidden="true">◼</span>Dashboard</a>
+            <a href="camps.html"><span class="nav-icon" aria-hidden="true">⌂</span>Camps</a>
+            <a href="grazing.html"><span class="nav-icon" aria-hidden="true">↻</span>Grazing</a>
+            <a href="monitoring.html"><span class="nav-icon" aria-hidden="true">♧</span>Monitoring</a>
+            <a href="water.html"><span class="nav-icon" aria-hidden="true">◌</span>Water</a>
+            <a href="report.jsp"><span class="nav-icon" aria-hidden="true">▦</span>Reports</a>
+        </nav>
+        <div class="sidebar-footer">
+            <form method="post" action="LogoutServlet">
+                <button class="logout-button" type="submit"><span class="nav-icon" aria-hidden="true">⏻</span>Sign out</button>
+            </form>
+        </div>
+    </aside>
+
+    <div class="main-panel">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">Vegetation monitoring</p>
+                <h1>Vegetation monitoring</h1>
+                <p>Capture grass height, vegetation condition and field observations.</p>
+            </div>
+            <div class="topbar-actions"><button class="btn btn-primary" type="button" data-toggle-panel="#monitoringPanel">Add record</button></div>
+        </header>
+        <main class="content">
+
+    <div class="alerts"><div class="alert" data-alert-from-query hidden></div></div>
+    <section id="monitoringPanel" class="panel" hidden>
+        <div class="panel-header"><div><h2>Add monitoring record</h2><p>Record a vegetation assessment for a selected camp.</p></div></div>
+        <div class="panel-body">
+            <form method="post" action="MonitoringServlet">
+                <div class="form-grid">
+                    <label class="field"><span>Camp</span><select id="camp_id" name="camp_id" required></select></label>
+                    <label class="field"><span>Monitoring date</span><input type="date" name="monitor_date" required></label>
+                    <label class="field"><span>Vegetation cover</span><select name="vegetation_cover" required><option value="">Select condition</option><option>Good</option><option>Fair</option><option>Poor</option></select></label>
+                    <label class="field"><span>Grass height (cm)</span><input type="number" name="grass_height_cm" required min="0" step="0.1" placeholder="e.g. 15"></label>
+                    <label class="field"><span>Recorded by</span><input type="text" name="recorded_by" required maxlength="100" placeholder="Enter your name"></label>
+                    <label class="field full"><span>Notes</span><textarea name="notes" maxlength="1000" placeholder="Additional observations"></textarea></label>
+                    <div class="field full"><button class="btn btn-primary" type="submit">Save record</button> <button class="btn btn-ghost" type="button" data-toggle-panel="#monitoringPanel">Cancel</button></div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="panel">
+        <div class="panel-header"><div><h2>Monitoring history</h2><p>Vegetation observations captured in the field.</p></div></div>
+        <div class="table-wrap">
+            <table id="monitoringTable">
+                <thead><tr><th>#</th><th>Camp</th><th>Date</th><th>Cover</th><th>Grass height</th><th>Recorded by</th><th>Notes</th><th>Action</th></tr></thead>
+                <tbody><tr><td class="empty-state" colspan="8">Loading monitoring records…</td></tr></tbody>
+            </table>
+        </div>
+    </section>
+
+        </main>
+        <p class="page-footer">© 2026 Eiseb Country Traders. Rangeland operations management.</p>
+    </div>
+</div>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/monitoring.js"></script>
+</body>
+</html>

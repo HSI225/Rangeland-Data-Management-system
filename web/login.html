@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Secure sign-in for the Eiseb Rangeland Manager.">
+    <title>Sign in · Eiseb Rangeland Manager</title>
+    <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body class="auth-body">
+    <main class="auth-panel">
+        <a class="auth-brand" href="login.html">
+            <span class="brand-mark"><img src="assets/img/logo.svg" alt=""></span>
+            <span class="brand-title">Eiseb <small>Rangeland Manager</small></span>
+        </a>
+        <div class="auth-copy">
+            <p class="eyebrow">Secure access</p>
+            <h1>Welcome back.</h1>
+            <p class="lede">Sign in to manage camps, grazing rotations, vegetation condition and water infrastructure.</p>
+        </div>
+        <div class="alert" data-alert-from-query hidden></div>
+        <section class="card auth-card" aria-labelledby="loginHeading">
+            <h2 id="loginHeading" class="card-heading">Sign in</h2>
+            <form method="post" action="LoginServlet" autocomplete="on">
+                <div class="form-grid">
+                    <label class="field full">
+                        <span>Username</span>
+                        <input type="text" name="username" autocomplete="username" required maxlength="30" placeholder="Enter your username">
+                    </label>
+                    <label class="field full">
+                        <span>Password</span>
+                        <input type="password" name="password" autocomplete="current-password" required placeholder="Enter your password">
+                    </label>
+                </div>
+                <div class="auth-actions">
+                    <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+                </div>
+            </form>
+        </section>
+        <div class="auth-links">
+            <a href="register.html">Create a staff account</a>
+            <a href="contact.html">Need support?</a>
+        </div>
+    </main>
+    <aside class="auth-hero" aria-label="Eiseb rangeland highlights">
+        <div class="hero-card">
+            <h2>Operational clarity for every camp.</h2>
+            <p>Bring grazing plans, ecological monitoring and water readiness into one dependable field-management system.</p>
+            <ul class="hero-points">
+                <li>Camp records</li>
+                <li>Rotation tracking</li>
+                <li>Vegetation monitoring</li>
+                <li>Water readiness</li>
+            </ul>
+        </div>
+    </aside>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

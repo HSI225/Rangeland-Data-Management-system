@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Eiseb Rangeland Manager - Water sources">
+    <title>Water · Eiseb Rangeland Manager</title>
+    <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<div class="app-shell">
+
+    <aside class="sidebar">
+        <a class="sidebar-brand" href="dashboard.jsp" aria-label="Eiseb dashboard">
+            <span class="brand-mark small"><img src="assets/img/logo.svg" alt=""></span>
+            <span class="brand-title">Eiseb <small>Rangeland Manager</small></span>
+        </a>
+        <nav class="sidebar-nav" aria-label="Main navigation">
+            <a href="dashboard.jsp"><span class="nav-icon" aria-hidden="true">◼</span>Dashboard</a>
+            <a href="camps.html"><span class="nav-icon" aria-hidden="true">⌂</span>Camps</a>
+            <a href="grazing.html"><span class="nav-icon" aria-hidden="true">↻</span>Grazing</a>
+            <a href="monitoring.html"><span class="nav-icon" aria-hidden="true">♧</span>Monitoring</a>
+            <a href="water.html"><span class="nav-icon" aria-hidden="true">◌</span>Water</a>
+            <a href="report.jsp"><span class="nav-icon" aria-hidden="true">▦</span>Reports</a>
+        </nav>
+        <div class="sidebar-footer">
+            <form method="post" action="LogoutServlet">
+                <button class="logout-button" type="submit"><span class="nav-icon" aria-hidden="true">⏻</span>Sign out</button>
+            </form>
+        </div>
+    </aside>
+
+    <div class="main-panel">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">Water infrastructure</p>
+                <h1>Water sources</h1>
+                <p>Track source type, capacity, inspections and operational condition.</p>
+            </div>
+            <div class="topbar-actions"><button class="btn btn-primary" type="button" data-toggle-panel="#waterPanel">Add water source</button></div>
+        </header>
+        <main class="content">
+
+    <div class="alerts"><div class="alert" data-alert-from-query hidden></div></div>
+    <section id="waterPanel" class="panel" hidden>
+        <div class="panel-header"><div><h2>Add water source</h2><p>Record infrastructure details and the latest inspection status.</p></div></div>
+        <div class="panel-body">
+            <form method="post" action="WaterServlet">
+                <div class="form-grid">
+                    <label class="field"><span>Camp</span><select id="camp_id" name="camp_id" required></select></label>
+                    <label class="field"><span>Source type</span><select name="source_type" required><option value="">Select type</option><option>Borehole</option><option>Dam</option><option>Trough</option><option>River</option><option>Rainwater Tank</option></select></label>
+                    <label class="field"><span>Capacity (litres)</span><input type="number" name="capacity_liters" required min="0.01" step="0.01" placeholder="e.g. 5000"></label>
+                    <label class="field"><span>Last inspected</span><input type="date" name="last_inspected" required></label>
+                    <label class="field"><span>Condition</span><select name="condition_status" required><option value="">Select condition</option><option>Good</option><option>Fair</option><option>Poor</option><option>Under Repair</option></select></label>
+                    <div class="field full"><button class="btn btn-primary" type="submit">Save source</button> <button class="btn btn-ghost" type="button" data-toggle-panel="#waterPanel">Cancel</button></div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="panel">
+        <div class="panel-header"><div><h2>Water source register</h2><p>Infrastructure and inspection records by camp.</p></div></div>
+        <div class="table-wrap">
+            <table id="waterTable">
+                <thead><tr><th>#</th><th>Camp</th><th>Source</th><th>Capacity</th><th>Last inspected</th><th>Condition</th><th>Action</th></tr></thead>
+                <tbody><tr><td class="empty-state" colspan="7">Loading water sources…</td></tr></tbody>
+            </table>
+        </div>
+    </section>
+
+        </main>
+        <p class="page-footer">© 2026 Eiseb Country Traders. Rangeland operations management.</p>
+    </div>
+</div>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/water.js"></script>
+</body>
+</html>

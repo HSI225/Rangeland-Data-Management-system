@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Create an Eiseb Rangeland Manager staff account.">
+    <title>Create account · Eiseb Rangeland Manager</title>
+    <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body class="auth-body">
+    <main class="auth-panel">
+        <a class="auth-brand" href="login.html">
+            <span class="brand-mark"><img src="assets/img/logo.svg" alt=""></span>
+            <span class="brand-title">Eiseb <small>Rangeland Manager</small></span>
+        </a>
+        <div class="auth-copy">
+            <p class="eyebrow">Staff onboarding</p>
+            <h1>Create your account.</h1>
+            <p class="lede">New accounts are created as staff users. Admin and manager roles are assigned by an administrator.</p>
+        </div>
+        <div class="alert" data-alert-from-query hidden></div>
+        <section class="card auth-card" aria-labelledby="registerHeading">
+            <h2 id="registerHeading" class="card-heading">Account details</h2>
+            <form method="post" action="RegisterServlet" autocomplete="on">
+                <div class="form-grid">
+                    <label class="field full">
+                        <span>Full name</span>
+                        <input type="text" name="fullname" autocomplete="name" required maxlength="100" placeholder="Enter your full name">
+                    </label>
+                    <label class="field full">
+                        <span>Username</span>
+                        <input type="text" name="username" autocomplete="username" required minlength="3" maxlength="30" pattern="[A-Za-z0-9_.\-]+" placeholder="Choose a username">
+                        <small>3–30 letters, numbers, dots, underscores or hyphens.</small>
+                    </label>
+                    <label class="field full">
+                        <span>Role</span>
+                        <select name="role" required>
+                            <option value="staff" selected>Staff</option>
+                            <option value="admin" selected>admin</option>
+                            <option value="manager" selected>manager</option>
+                        </select>
+                    </label>
+                    <label class="field">
+                        <span>Password</span>
+                        <input type="password" name="password" autocomplete="new-password" required minlength="4" placeholder="Minimum 4 characters">
+                    </label>
+                    <label class="field">
+                        <span>Confirm password</span>
+                        <input type="password" name="confirmpass" autocomplete="new-password" required minlength="4" placeholder="Repeat your password">
+                    </label>
+                </div>
+                <div class="auth-actions">
+                    <button class="btn btn-primary btn-block" type="submit">Create account</button>
+                </div>
+            </form>
+        </section>
+        <div class="auth-links">
+            <a href="login.html">Already registered? Sign in</a>
+            <a href="contact.html">Need support?</a>
+        </div>
+    </main>
+    <aside class="auth-hero" aria-label="Eiseb account benefits">
+        <div class="hero-card">
+            <h2>Field-ready access for your team.</h2>
+            <p>Give trusted staff a consistent way to capture operational data while keeping administrative permissions controlled.</p>
+            <ul class="hero-points">
+                <li>Secure sign-in</li>
+                <li>Controlled roles</li>
+                <li>Reliable records</li>
+                <li>Audit-ready reports</li>
+            </ul>
+        </div>
+    </aside>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
